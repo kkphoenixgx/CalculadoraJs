@@ -1,0 +1,44 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+body{
+    margin: 0px;
+    border: none;
+    background-repeat: no-repeat;
+    background-size: 10px, 10px;
+}
+.blackHeader{
+    width: 100vw;
+    height: 36px;
+    background-color: rgba(0, 0, 0, 0.94);
+    display: flex;
+    align-items: center;
+}
+
+.blackHeader > h1{
+    color: white;
+    font-size: 20px;
+    display: flex;
+    flex: auto;
+    margin-left: 27px;
+}
+
+.me {
+    width: 25px;
+    height: 25px;
+    margin-top: 3px;
+}
+
+section{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

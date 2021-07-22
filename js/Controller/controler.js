@@ -1,7 +1,0 @@
-Calc{
-    controller(){
-        initialize();
-    }
-
-    initialize(){}
-}
