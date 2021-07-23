@@ -2,15 +2,14 @@
 @font-face {
     font-family: 'Lato-Light';
     src: url("fonts/Lato-Light.ttf");
-    font-family: 'Lato-LightItalic';
-    src: url("fonts/Lato-LightItalic.ttf");
+    font-family: 'GothamRounded-Medium';
+    src: url("fonts/GothamRounded-Medium.otf");
 }
 
 *{
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
-    border: none;
     font-family: 'Lato-Light';
 }
 section{
@@ -32,7 +31,7 @@ body{
 }
 .blackHeader{
     width: 100vw;
-    height: 77px;
+    height: 62px;
     background-color: rgba(0, 0, 0, 0.94);
     display: flex;
     align-items: center;
@@ -52,8 +51,51 @@ body{
     margin-right: 27px;
 }
 
-.buttons{
-    font-family: 'Lato-LightItalic';
+.calculator-grid{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 75px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 69px);
+    margin-bottom: 39px;
+}
+
+.calculator-grid > button{
+    font-family: 'GothamRounded-Medium';
+    cursor: pointer;
+    font-size: 1.5em;
+    outline: none;
+    background-color: rgba(255, 255, 255, .75);
+}
+
+.calculator-grid > button:hover{
+    background-color: rgba(255, 255, 255, .9);
+}
+
+.largeSpace{
+    grid-column: span 2;
+}
+
+.display{
+    grid-column: 1/-1;
+    background-color: rgb(41 45 45);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+    border: #677d7d solid 3px;
+}
+.display #current-log{
+    color:rgba(255, 255, 255, .75);
+    font-size: 1em;
+}
+.display #log{
+    color:white;
+    font-size: 2.5em;
 }
 
 
