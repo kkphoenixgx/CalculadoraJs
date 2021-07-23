@@ -1,8 +1,17 @@
+
+@font-face {
+    font-family: 'Lato-Light';
+    src: url("fonts/Lato-Light.ttf");
+    font-family: 'Lato-LightItalic';
+    src: url("fonts/Lato-LightItalic.ttf");
+}
+
 *{
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
     border: none;
+    font-family: 'Lato-Light';
 }
 section{
     position: relative;
@@ -23,12 +32,11 @@ body{
 }
 .blackHeader{
     width: 100vw;
-    height: 36px;
+    height: 77px;
     background-color: rgba(0, 0, 0, 0.94);
     display: flex;
     align-items: center;
 }
-
 .blackHeader > h1{
     color: white;
     font-size: 20px;
@@ -38,9 +46,14 @@ body{
 }
 
 .me {
-    width: 25px;
-    height: 25px;
-    margin-top: 3px;
+    width: 33px;
+    height: 33px;
+    margin-top: 8px;
+    margin-right: 27px;
+}
+
+.buttons{
+    font-family: 'Lato-LightItalic';
 }
 
 
