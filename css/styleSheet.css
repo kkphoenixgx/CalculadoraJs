@@ -88,12 +88,13 @@ body{
     word-wrap: break-word;
     word-break: break-all;
     border: #677d7d solid 3px;
+    color: silver;
 }
-.display #current-log{
+.current-log{
     color:rgba(255, 255, 255, .75);
     font-size: 1em;
 }
-.display #log{
+.log{
     color:white;
     font-size: 2.5em;
 }
