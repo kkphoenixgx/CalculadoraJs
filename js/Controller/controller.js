@@ -1,6 +1,5 @@
 class Controller{
     constructor(){
-
         //Buttons
         this.numberButtons = document.querySelectorAll('[data-number]');
         this.operatorButtons = document.querySelectorAll('[data-operation]');
@@ -8,7 +7,7 @@ class Controller{
         //another buttons
         this.equalButton = document.querySelector('[data-equal]');
         this.ACButton = document.querySelector('[data-AC]');
-        this.CeButton = document.querySelector('[data-number]');
+        this.CeButton = document.querySelector('[data-CE]');
 
         //Logs
         this.logScreenTextElement = document.querySelector(['[data-log]']);
@@ -16,7 +15,6 @@ class Controller{
         this.initButtonEvents();
 
         // operation
-
         this.operation = [];
         this.newOperation = [];
         this.lastNumber = '';
@@ -29,15 +27,21 @@ class Controller{
             btn.addEventListener('click', () => {
                 this.execute(btn.innerText);
             })
-        })
+        });
         this.operatorButtons.forEach(operator => {
             operator.addEventListener('click', () => {
                 this.execute(operator.innerText);
             })
-        })
+        });
 
         this.ACButton.addEventListener('click', () => {
             this.execute(this.ACButton.innerText);
+        });
+        this.equalButton.addEventListener('click', () => {
+            this.execute(this.equalButton.innerText);
+        });
+        this.CeButton.addEventListener('click', () => {
+            this.execute(this.CeButton.innerText);
         })
 
         document.addEventListener('keyup', e =>{
@@ -92,8 +96,11 @@ class Controller{
         clearScreen(){
             this.currentLog = '';
             this.operation = [];
+            this.newOperation = [];
             this.logScreen = '0';
+            this.currentLog = '0';
             this.updateDisplay();
+            this.updateCurrentLog();
         }
         updateDisplay(){
             if(this.operation == 0){
@@ -104,8 +111,12 @@ class Controller{
             }
         }
         updateCurrentLog(){
-            this.currentLog = this.newOperation.toString();
+           
+            let operationToLog = this.newOperation.toString().replace(/,/g , " ");
+
+            this.currentLog = operationToLog.toString();
             this.currentLogTextElement.innerText = this.currentLog;
+         
         }
 
         setAnError(){
@@ -122,20 +133,22 @@ class Controller{
             if(this.isOperator(value)){
                 //quando é um operador
                 console.log(value);
-                this.newOperation = this.operation.toString() + value.toString();
+                this.newOperation.push(this.operation);
+                this.newOperation.push(value);
                 this.updateCurrentLog();
                 this.operation = [];
-                this.logScreenTextElement.innerText = '0';
-                this.updateDisplay;
+                if(this.newOperation.length >= 3){
+                    console.log(this.newOperation);
+                    this.calculate();
+                }
+                this.updateDisplay();
 
             }else{
                 // onde o número normal entra
                 console.log(value);
                 this.operation.push(value);
                 this.updateDisplay();
-            }
-            if(this.operation){
-                this.calculate();
+                this.updateCurrentLog();
             }
         }
 
@@ -154,7 +167,7 @@ class Controller{
             this.operation[this.operation.length -1] = value;
         }
         setLastOperatorOperation(value){
-            this.newOperation = this.newOperation.substring(0,this.newOperation.length-1) + value;
+            this.newOperation[this.newOperation.length-1] = value;
         }
 
     //Operations->
@@ -164,8 +177,12 @@ class Controller{
         if(isNaN(this.getLastOperation())){
            if(this.isOperator(value)){
                 console.log(value);
-                this.setLastOperatorOperation(value);
-                this.updateCurrentLog();
+                if(this.newOperation.length == 0){
+                    this.pushOperation(value);
+                }else{
+                    this.setLastOperatorOperation(value);
+                    this.updateCurrentLog();
+                }
            }else{
                 console.log(value);
                 this.pushOperation(value);
@@ -195,7 +212,32 @@ class Controller{
     }
 
     calculate(){
-        
+        let lastDigit = this.newOperation.pop();
+
+        let result = eval(this.newOperation.join(""));
+
+        this.newOperation = [result,lastDigit];
+        this.logScreenTextElement.innerText = result;
+        this.updateCurrentLog();
+        this.updateDisplay();
+    }
+
+    equal(){
+        let calculate = this.newOperation.join("") + this.operation.join("");
+        this.operation = eval(calculate);
+        this.newOperation = [];
+        this.updateCurrentLog();
+        this.updateDisplay();
+    }
+
+    CE(){
+        if(this.operation.length =! 0 && this.operation	== 0){
+            this.newOperation.pop(this.newOperation.length-1);
+            this.updateCurrentLog();
+        }else{
+            this.operation = [];
+            this.updateDisplay();
+        }
     }
 
     execute(value){
@@ -237,8 +279,10 @@ class Controller{
                 this.clearScreen();
                 break;
             case 'CE':
+                this.CE();
+                break;
             case '=':
-                this.calculate();
+                this.equal();
             default:
                 this.setAnError();
                 break;
