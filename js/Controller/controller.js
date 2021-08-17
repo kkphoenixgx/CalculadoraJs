@@ -224,7 +224,7 @@ class Controller{
 
     equal(){
         let calculate = this.newOperation.join("") + this.operation.join("");
-        this.operation = eval(calculate);
+        this.operation = [eval(calculate)];
         this.newOperation = [];
         this.updateCurrentLog();
         this.updateDisplay();
