@@ -1,9 +1,9 @@
 
 @font-face {
     font-family: 'Lato-Light';
-    src: url("fonts/Lato-Light.ttf");
+    src: url("../assets/fonts/Lato-Light.ttf");
     font-family: 'GothamRounded-Medium';
-    src: url("fonts/GothamRounded-Medium.otf");
+    src: url("../assets/fonts/GothamRounded-Medium.otf");
 }
 
 *{
@@ -114,35 +114,35 @@ section .star{
 }
 section .star.star1{
     animation-delay: 0s;
-    background: url("img/stars/star1.png");
+    background: url("../assets/img/stars/star1.png");
 }
 section .star.star2{
     animation-delay: -1s;
-    background: url("img/stars/star2.png");
+    background: url("../assets/img/stars/star2.png");
 }
 section .star.star3{
     animation-delay: -2s;
-    background: url("img/stars/star3.png");
+    background: url("../assets/img/stars/star3.png");
 }
 section .star.star4{
     animation-delay: -3s;
-    background: url("img/stars/star4.png");
+    background: url("../assets/img/stars/star4.png");
 }
 section .star.star5{
     animation-delay: -4s;
-    background: url("img/stars/star5.png");
+    background: url("../assets/img/stars/star5.png");
 }
 section .star.star6{
     animation-delay: -5s;
-    background: url("img/stars/star6.png");
+    background: url("../assets/img/stars/star6.png");
 }
 section .star.star7{
     animation-delay: -6s;
-    background: url("img/stars/star7.png");
+    background: url("../assets/img/stars/star7.png");
 }
 section .star.star8{
     animation-delay: -7s;
-    background: url("img/stars/star8.png");
+    background: url("../assets/img/stars/star8.png");
 }
 
 @keyframes animate{
