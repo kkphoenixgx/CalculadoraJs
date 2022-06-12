@@ -5,7 +5,9 @@
     font-family: 'GothamRounded-Medium';
     src: url("../assets/fonts/GothamRounded-Medium.otf");
 }
-
+html{
+    overflow: hidden;
+}
 *{
     box-sizing: border-box;
     margin: 0px;
